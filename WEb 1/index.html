@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Pro Max</title>
+    
+    <!-- Estilos CSS -->
+    <style>
+        /* Estilos básicos para la página */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #0079e4;
+            color: #000000;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        /* Posicionar el título en la parte superior */
+        h1 {
+            font-size: 24px;
+            color: #2c3e50;
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            margin: 0;
+        }
+
+        /* Contenedor principal */
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h2 {
+            font-size: 20px;
+            color: #34495e;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        /* Estilos para el formulario */
+        label {
+            font-size: 14px;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        /* Contenedor de resultados */
+        #resultado {
+            background-color: #33d168;
+            padding: 10px;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-top: 15px;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        /* Responsividad para pantallas más pequeñas */
+        @media (max-width: 600px) {
+            form {
+                padding: 15px;
+            }
+
+            button {
+                padding: 8px;
+            }
+        }
+    </style>
+
+    <!-- Código JavaScript -->
+    <script>
+        function realizarOperaciones() {
+            // Obtener los valores ingresados
+            const numero1 = parseFloat(document.getElementById('numero1').value);
+            const numero2 = parseFloat(document.getElementById('numero2').value);
+            let resultado = '';
+
+            // Iterar 5 veces para realizar las operaciones solicitadas
+            for (let i = 1; i <= 5; i++) {
+                switch (i) {
+                    case 1:
+                        resultado += 'Iteración ' + i + ' - Suma: ' + (numero1 + numero2) + '<br>';
+                        break;
+                    case 2:
+                        resultado += 'Iteración ' + i + ' - Resta: ' + (numero1 - numero2) + '<br>';
+                        break;
+                    case 3:
+                        resultado += 'Iteración ' + i + ' - Multiplicación: ' + (numero1 * numero2) + '<br>';
+                        break;
+                    case 4:
+                        if (numero2 !== 0) {
+                            resultado += 'Iteración ' + i + ' - División: ' + (numero1 / numero2) + '<br>';
+                        } else {
+                            resultado += 'Iteración ' + i + ' - División: No se puede dividir entre 0<br>';
+                        }
+                        break;
+                    case 5:
+                        resultado += 'Iteración ' + i + ' - Módulo: ' + (numero1 % numero2) + '<br>';
+                        break;
+                }
+            }
+
+            // Mostrar los resultados en el contenedor
+            document.getElementById('resultado').innerHTML = resultado;
+        }
+    </script>
+</head>
+<body>
+    <h1>Calculadora con bucle de 5 iteraciones</h1>
+
+    <form onsubmit="event.preventDefault(); realizarOperaciones();">
+        <label for="numero1">Ingrese el primer número:</label><br>
+        <input type="number" id="numero1" required><br><br>
+
+        <label for="numero2">Ingrese el segundo número:</label><br>
+        <input type="number" id="numero2" required><br><br>
+
+        <button type="submit">Realizar Operaciones</button>
+    </form>
+
+    <h2>Resultados:</h2>
+    <div id="resultado"></div>
+</body>
+</html>
